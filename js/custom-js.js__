@@ -1,0 +1,83 @@
+jQuery(document).ready(function() {
+
+	/*jquery for display contact over section*/
+
+
+   jQuery('.downarrw').on( "click", function(e) { 
+   	 e.preventDefault();
+    jQuery('.oversection').hide();
+    var id = jQuery(this).attr('data-id'); 
+    jQuery("div").each(function(){
+        
+        if(jQuery(this).attr('data-id') == id) {
+            jQuery(this).show();
+        }
+    });
+   });
+
+
+jQuery('.uparrw').on( "click", function(e) { 
+    	 e.preventDefault();
+    var sectionid = jQuery(this).attr('data-back-id'); 
+    
+    jQuery("div").each(function(){
+        
+        if(jQuery(this).attr('data-id') == sectionid) {
+            jQuery(this).hide();
+        }
+    });
+   });
+
+
+jQuery('.upd-edit').on('click','.editarrw', function(event) { 
+       
+      event.preventDefault(); 
+    var sectionid = jQuery(this).attr('data-back-id');    
+    jQuery("div").each(function(){
+        
+        if(jQuery(this).attr('id') == sectionid) {
+            jQuery(this).hide();
+        }
+    });
+   });
+
+
+
+
+
+
+/*jquery For the Google Map*/
+
+ var geocoder;
+  var map;
+  function initialize() {
+    geocoder = new google.maps.Geocoder();
+
+    var mapOptions = {
+      zoom: 12, //Change the Zoom level to suit your needs
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    //map_canvas is just a <div> on the page with the id="map_canvas"
+    map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+
+    //Your Variable Containing The Address
+    var address = "<?php echo $AddressVariable; ?>"; 
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        map.setCenter(results[0].geometry.location);
+        //places a marker on every location
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+
+  }
+
+  
+
+
+})

@@ -1,0 +1,53 @@
+<?php
+/*
+Title:Social Links
+Post Type: listing
+*/
+
+piklist ('field', array(
+	'type'=> 'text',
+	'scope' => 'post_meta',
+	'field' => 'listing_skype_id',
+	'label' => __('Skype ID','phone-dir')
+	,'attributes' => array(
+		'class' => 'text')
+		,'sanitize' => array(
+      array(
+        'type' => 'text_field'
+      )
+    )
+
+));
+ 
+
+piklist ('field', array(
+	'type'=> 'text',
+	'scope' => 'post_meta',
+	'field' => 'listing_facebook',
+	'label' => __('Facebook URL','phone-dir')
+	,'attributes' => array(
+		'class' => 'text')
+		,'sanitize' => array(
+      array(
+        'type' => 'text_field'
+      )
+    )
+
+));
+ 
+piklist ('field', array(
+	'type'=> 'text',
+	'scope' => 'post_meta',
+	'field' => 'listing_twitter',
+	'label' => __('Twitter Username','phone-dir')
+	,'description' => __('Your username without the @','phone-dir')
+	,'attributes' => array(
+		'class' => 'text')
+		,'sanitize' => array(
+      array(
+        'type' => 'text_field'
+      )
+    )
+
+));
+
